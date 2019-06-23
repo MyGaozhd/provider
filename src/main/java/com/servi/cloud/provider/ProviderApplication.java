@@ -3,6 +3,9 @@ package com.servi.cloud.provider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 服务提供者
+ */
 @SpringBootApplication
 public class ProviderApplication {
 
