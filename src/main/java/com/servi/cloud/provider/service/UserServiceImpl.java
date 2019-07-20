@@ -5,6 +5,8 @@ import com.servi.cloud.provider.dao.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -12,11 +14,17 @@ public class UserServiceImpl implements IUserService {
     private IUserDao userDao;
 
     @Override
-    public User findUserById(String id) {
-        User user = new User();
-        user.setId(id);
-        user.setName(id + "kk");
-        user.setSex(id + "man");
-        return user;
+    public User findUserById(int  id) {
+        return userDao.find(id);
+    }
+
+    @Override
+    public void insert(User user) {
+        userDao.insert(user);
+    }
+
+    @Override
+    public void insertbatch(List<User> users) {
+        userDao.insertbatch(users);
     }
 }

@@ -1,0 +1,17 @@
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    # 开发禁用缓存
+    cache: false
+  datasource:
+    url: jdbc:mysql://172.16.86.6:3306/sty?characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+    username: sty
+    password: sty
+    # 可省略驱动配置, sprin-boot 会由url检测出驱动类型
+    # driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.servi.cloud.provider.enty

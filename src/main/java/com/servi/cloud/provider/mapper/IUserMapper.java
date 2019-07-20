@@ -1,10 +1,13 @@
-package com.servi.cloud.provider.dao;
+package com.servi.cloud.provider.mapper;
 
 import com.servi.cloud.provider.entry.User;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-public interface IUserDao {
+@Mapper
+public interface IUserMapper {
+
     public void insertbatch(List<User> users);
 
     public void insert(User user);

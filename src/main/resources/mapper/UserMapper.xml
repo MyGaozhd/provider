@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.servi.cloud.provider.mapper.IUserMapper">
+
+    <!-- insert user -->
+    <insert id = "insert" parameterType="com.servi.cloud.provider.entry.User">
+        INSERT INTO USER (id, usercode, usercode1, name, name1, sex, age, email, phone, adress)VALUES (#{id},#{usercode},#{usercode1},#{name},#{name1},#{sex},#{age},#{email},#{phone},#{adress});
+    </insert>
+
+    <insert id="insertbatch" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into USER
+        ( usercode, usercode1, name, name1, sex, age, email, phone, adress)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.usercode},
+            #{item.usercode1},
+            #{item.name},
+            #{item.name1},
+            #{item.sex},
+            #{item.age},
+            #{item.email},
+            #{item.phone},
+            #{item.adress}
+            )
+        </foreach>
+    </insert>
+    <!-- update user -->
+    <update id="update" parameterType="com.servi.cloud.provider.entry.User">
+        UPDATE USER SET name =#{name } , AGE = #{age} WHERE ID=#{id}
+    </update>
+
+    <!-- find user -->
+    <select id="find" parameterType="int" resultType="com.servi.cloud.provider.entry.User">
+        SELECT ID,name ,AGE FROM USER WHERE ID=#{0}
+    </select>
+
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM USER WHERE ID=#{0}
+    </delete>
+</mapper>
