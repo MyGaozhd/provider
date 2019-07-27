@@ -2,7 +2,8 @@ package com.servi.cloud.provider.controller;
 
 
 import com.servi.cloud.provider.entry.User;
-import com.servi.cloud.provider.redis.RedisUtil;
+import com.servi.cloud.provider.redis.ICache;
+import com.servi.cloud.provider.redis.RedisCache;
 import com.servi.cloud.provider.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +18,15 @@ public class UserController {
     @Autowired
     private IUserService userService;
     @Autowired
-    private RedisUtil redisUtil;
+    private ICache cache;
 
     @GetMapping("/user/{id}")
     public User findUserById(@PathVariable int id) {
-
+        User user = cache.get(id+"");
+        if (user == null){
+            user=userService.findUserById(id);
+            cache.add(id+"",user);
+        }
         return userService.findUserById(id);
     }
 
@@ -59,6 +64,6 @@ public class UserController {
     @GetMapping("/gettest")
     public String redisTest() {
 
-        return  redisUtil.getString("a");
+        return  ((RedisCache)cache).getString("a");
     }
 }

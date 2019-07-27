@@ -6,7 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RedisUtil {
+public class RedisCache implements ICache {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -25,8 +25,8 @@ public class RedisUtil {
         redisTemplate.delete(key);
     }
 
-    public void add(String key, String value) {
-        stringRedisTemplate.opsForValue().set(key, value);
+    public <T> void add(String key, T value) {
+        redisTemplate.opsForValue().set(key, value);
     }
 
     public String getString(String key) {
