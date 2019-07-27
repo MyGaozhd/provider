@@ -5,6 +5,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 @Component
 public class RedisCache implements ICache {
 
@@ -26,7 +28,7 @@ public class RedisCache implements ICache {
     }
 
     public <T> void add(String key, T value) {
-        redisTemplate.opsForValue().set(key, value);
+        redisTemplate.opsForValue().set(key,value,Duration.ofSeconds(5));
     }
 
     public String getString(String key) {
