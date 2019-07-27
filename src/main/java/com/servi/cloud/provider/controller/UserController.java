@@ -27,7 +27,7 @@ public class UserController {
             user=userService.findUserById(id);
             cache.add(id+"",user);
         }
-        return userService.findUserById(id);
+        return user;
     }
 
     @GetMapping("/adduser")

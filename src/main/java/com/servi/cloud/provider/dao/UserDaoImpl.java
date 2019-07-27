@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements  IUserDao{
+public class UserDaoImpl implements IUserDao {
 
     @Resource
     private IUserMapper userMapper;
@@ -20,7 +20,7 @@ public class UserDaoImpl implements  IUserDao{
 
     @Override
     public void insert(User user) {
-         userMapper.insert(user);
+        userMapper.insert(user);
     }
 
     @Override
