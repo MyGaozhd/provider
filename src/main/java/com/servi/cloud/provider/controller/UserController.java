@@ -2,6 +2,7 @@ package com.servi.cloud.provider.controller;
 
 
 import com.servi.cloud.provider.entry.User;
+import com.servi.cloud.provider.redis.RedisUtil;
 import com.servi.cloud.provider.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private IUserService userService;
+    @Autowired
+    private RedisUtil redisUtil;
 
     @GetMapping("/user/{id}")
     public User findUserById(@PathVariable int id) {
@@ -51,5 +54,11 @@ public class UserController {
 
         userService.insertbatch(users);
         return "success";
+    }
+
+    @GetMapping("/gettest")
+    public String redisTest() {
+
+        return  redisUtil.getString("a");
     }
 }
