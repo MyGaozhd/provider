@@ -2,10 +2,12 @@ package com.servi.cloud.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * 服务提供者
  */
+@EnableEurekaClient
 @SpringBootApplication
 public class ProviderApplication {
 

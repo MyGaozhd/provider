@@ -13,6 +13,16 @@ spring:
     host: 10.16.225.69
     port: 6379
     password: sty
+  application:
+    name: provider
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.servi.cloud.provider.enty
+server:
+  port: 9001
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
