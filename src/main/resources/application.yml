@@ -19,7 +19,7 @@ mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.servi.cloud.provider.enty
 server:
-  port: 9001
+  port: 9003
 eureka:
   instance:
     prefer-ip-address: true
