@@ -15,11 +15,16 @@ spring:
     password: sty
   application:
     name: provider
+  rabbitmq:
+    host: 172.16.86.6
+    port: 5672
+    username: sty1
+    password: sty
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.servi.cloud.provider.enty
 server:
-  port: 9003
+  port: 9004
 eureka:
   instance:
     prefer-ip-address: true
