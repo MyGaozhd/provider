@@ -20,6 +20,9 @@ spring:
     port: 5672
     username: sty1
     password: sty
+  cloud:
+    inetutils:
+      default-ip-address: 127.0.0.1
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.servi.cloud.provider.enty
@@ -28,6 +31,7 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.inetutils.default-ip-address}:${spring.application.instance-id:${server.port}}
   client:
     service-url:
       defaultZone: http://localhost:8888/eureka/
