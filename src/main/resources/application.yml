@@ -34,4 +34,9 @@ eureka:
     instance-id: ${spring.application.name}:${spring.cloud.inetutils.default-ip-address}:${spring.application.instance-id:${server.port}}
   client:
     service-url:
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://localhost:8888/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
