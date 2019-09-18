@@ -40,3 +40,5 @@ management:
     web:
       exposure:
         include: "*"
+logging:
+  file: D:\develop\java\ide_home\log\provider.log
